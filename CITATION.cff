@@ -1,0 +1,10 @@
+preferred-citation:
+  type: article
+  authors:
+    - family-names: Sana
+      given-names: Hugues
+  title: "Paper Title"
+  journal: "Science"
+  year: 2026
+  doi: "DOI_HERE"
+``
