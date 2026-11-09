@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.ticker import LogLocator, LogFormatter
 import orbital_configuration_posteriors_R136 as func
 
 
@@ -13,7 +14,7 @@ def get_output_config(output):
         'Ratio':           (0,      2,     'linear', 'Sep/a',                           3),
         'Proj_Separation': (200,    2000,  'log',    'Proj. Separation (au)',           0),
         'Semi-major_axis': (200,    10000, 'log',    'a (au)',                          0),
-        'Period':          (200,    20000, 'log',    'Period (year)',                   0),
+        'Period':          (200,    19999, 'log',    'Period (year)',                   0),
     }
     return cfg[output]
 
@@ -37,6 +38,16 @@ def plot_marginalised_panel(ax, output, object, nbins=200, N=900_000, rng=None):
 
     ax.plot(cent, pdf, color='k', lw=2.8)
     ax.set_xscale(scale_choice)
+
+    if scale_choice == 'log':
+        ax.xaxis.set_major_locator(LogLocator(base=10, numticks=5))
+        ax.xaxis.set_major_formatter(LogFormatter(base=10, labelOnlyBase=True))
+        # Force specific ticks depending on range
+        if xmax <= 10000:   # Semi-major_axis: 200–10000
+            ax.set_xticks([300, 1000, 3000, 10000])
+        else:               # Period: 200–20000
+            ax.set_xticks([300, 1000, 3000, 10000, 20000])
+        ax.get_xaxis().set_major_formatter(plt.ScalarFormatter())
 
     x_sorted = np.sort(x)
     median   = np.median(x_sorted)
