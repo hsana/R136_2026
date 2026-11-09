@@ -257,12 +257,12 @@ nbins = 200
 #xmin = 2.
 
 object='A1'
-output='Period'
-output='Semi-major_axis'
+# output='Period'
+# output='Semi-major_axis'
 #output='Ratio'
 #output='RV'
 ##output='Vtan_mas'
-#output='Vtan_micas'
+output='Vtan_micas'
 if output == 'RV':
     xmax=15
     xmin=-15

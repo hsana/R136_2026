@@ -8,13 +8,13 @@ import orbital_configuration_posteriors_R136 as func
 def get_output_config(output):
     """Return (xmin, xmax, scale_choice, xlabel, Ndigit) for a given output type."""
     cfg = {
-        'RV':              (-15,    15,    'linear', 'RV (km/s)',                      3),
-        'Vtan_mas':        (0.001,  0.1,   'log',    'Tangential velocity (mas/yr)',    3),
-        'Vtan_micas':      (0,      125,   'linear', 'Astrometric motion (1e-3mas/yr)',2),
-        'Ratio':           (0,      2,     'linear', 'Sep/a',                           3),
-        'Proj_Separation': (200,    2000,  'log',    'Proj. Separation (au)',           0),
-        'Semi-major_axis': (200,    10000, 'log',    'a (au)',                          0),
-        'Period':          (200,    19999, 'log',    'Period (year)',                   0),
+        'RV':              (-15,    15,    'linear', 'RV (km/s)'),
+        'Vtan_mas':        (0.001,  0.1,   'log',    'Tangential velocity (mas/yr)'),
+        'Vtan_micas':      (0,      125,   'linear', 'Astrometric motion (1e-3mas/yr)'),
+        'Ratio':           (0,      2,     'linear', 'Sep/a'),
+        'Proj_Separation': (200,    2000,  'log',    'Proj. Separation (au)'),
+        'Semi-major_axis': (200,    10000, 'log',    'a (au)'),
+        'Period':          (200,    20000, 'log',    'Period (year)'),
     }
     return cfg[output]
 
@@ -27,7 +27,7 @@ def plot_marginalised_panel(ax, output, object, nbins=200, N=900_000, rng=None):
     if rng is None:
         rng = np.random.default_rng(42)
 
-    xmin, xmax, scale_choice, xlabel, Ndigit = get_output_config(output)
+    xmin, xmax, scale_choice, xlabel = get_output_config(output)
 
     bins = np.linspace(xmin, xmax, nbins + 1)
     cent = 0.5 * (bins[:-1] + bins[1:])
@@ -46,7 +46,7 @@ def plot_marginalised_panel(ax, output, object, nbins=200, N=900_000, rng=None):
         if xmax <= 10000:   # Semi-major_axis: 200–10000
             ax.set_xticks([300, 1000, 3000, 10000])
         else:               # Period: 200–20000
-            ax.set_xticks([300, 1000, 3000, 10000, 20000])
+            ax.set_xticks([300, 1000, 3000, 10000])
         ax.get_xaxis().set_major_formatter(plt.ScalarFormatter())
 
     x_sorted = np.sort(x)
