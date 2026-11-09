@@ -3,3 +3,4 @@ __pycache__/
 /plots
 *.png
 *.pdf
+*.DS_Store

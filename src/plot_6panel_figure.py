@@ -72,7 +72,7 @@ def plot_marginalised_panel(ax, output, object, nbins=200, N=900_000, rng=None):
     ax.plot(cent, pdf, color='k', lw=2.8)
 
     ymax = ax.get_ylim()[1]
-    fmt = '.0f' if output == 'Vtan_micas' else '.0f'
+    fmt = '.1f' if output == 'Vtan_micas' else '.0f'
 
     ax.text(median,    ymax*0.05, f'{median:{fmt}}',    color='red',    ha='right', va='bottom', fontsize=10, rotation=90)
     ax.text(hdi_68[0], ymax*0.02, f'{hdi_68[0]:{fmt}}', color='orange', ha='left',  va='bottom', fontsize=10, rotation=90)
