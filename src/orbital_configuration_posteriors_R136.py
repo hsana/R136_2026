@@ -183,17 +183,17 @@ def sample_sep_over_a(
 
 
     if object == 'A1':
-        m1=asymmetric_gaussian(n=n,median=237,sigma_left=-38 , sigma_right=+59, rng=rng) #Msun
-        m2=asymmetric_gaussian(n=n,median=135,sigma_left=-21 , sigma_right=+18, rng=rng) #Msun
-        x2 = 2.2613+rng.standard_normal(size=n)* 0.0066 #mas
-        y2 = 14.224+rng.standard_normal(size=n)*0.0121  #mas
+        m1=asymmetric_gaussian(n=n,median=240,sigma_left=-40 , sigma_right=+50, rng=rng) #Msun
+        m2=asymmetric_gaussian(n=n,median=140,sigma_left=-20 , sigma_right=+30, rng=rng) #Msun
+        x2 = -2.42+rng.standard_normal(size=n)* 0.10 #mas
+        y2 = -14.08+rng.standard_normal(size=n)*0.06  #mas
              
     else:
         #OBJECT A2
-        m1=asymmetric_gaussian(n=n,median=208,sigma_left=-30 , sigma_right=+36, rng=rng) #Msun
-        m2=asymmetric_gaussian(n=n,median=78 ,sigma_left=-8  , sigma_right=+10, rng=rng) #Msun
-        x2 = -19.623+rng.standard_normal(size=n)*0.00669 #mas
-        y2 = -12.865+rng.standard_normal(size=n)*0.0128  #mas
+        m1=asymmetric_gaussian(n=n,median=200,sigma_left=-40 , sigma_right=+40, rng=rng) #Msun
+        m2=asymmetric_gaussian(n=n,median=70 ,sigma_left=-10  , sigma_right=+10, rng=rng) #Msun
+        x2 = 19.53+rng.standard_normal(size=n)*0.10 #mas
+        y2 = 12.97+rng.standard_normal(size=n)*0.07  #mas
     mass_msun=m1+m2
     sep_mas=np.sqrt(x2**2+y2**2)
     
@@ -257,12 +257,12 @@ nbins = 200
 #xmin = 2.
 
 object='A1'
-output='Period'
-output='Semi-major_axis'
+# output='Period'
+# output='Semi-major_axis'
 #output='Ratio'
 #output='RV'
 ##output='Vtan_mas'
-#output='Vtan_micas'
+output='Vtan_micas'
 if output == 'RV':
     xmax=15
     xmin=-15

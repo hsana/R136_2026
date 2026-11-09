@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+/plots
+*.png
+*.pdf
+*.DS_Store
